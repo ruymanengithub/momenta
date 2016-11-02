@@ -1,0 +1,33 @@
+16/2/2007
+
+I'm going to design an upgrade of moments.py in order to allow to create
+.pdf files with relevant images for every target, using "LaTeX".
+
+uses:  pyfits, fitscut, PIL, pylab, LaTeX
+
+
+Things to show:
+
+stamp, mask, skyimage
+
+Radial profile
+
+Petrosian ellipse on stamp
+
+cross on Peak Center
+
+Gini plot (+Gini Value)
+
+Asymmetry image (+Asymmetry value)
+
+Concent -> show both apertures on stamp (+Value)
+
+Clumpy image (+Value)
+
+Major Axis Asymmetry image (+ value)
+
+Minor Axis Asymmetry image (+ value)
+
+M20 : masks of pixels at both isophotal levels (+value)
+
+

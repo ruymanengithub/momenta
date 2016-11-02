@@ -1,0 +1,109 @@
+5,9,05
+
+De cualquir problema, aqui va un diagrama de flujo detallado del programa "moments" que realiza el análisis global de la distribución de brillo en imágenes de galaxias.
+
+
+Inputs: - imágen Padre.
+	- catálogo de Sextractor con las fuentes de Padre extraidas
+	puede ser un catálogo con "ASSOC", es decir, con fuentes de interés seleccionadas
+	- mapa de segmentación con pixels de cada objeto por separado
+	- fichero con parámetros de ejecución (algoritmos a ejecutar, parámetros libres, etc.)
+	- Se deberia leer tambien un fichero con parámetros por default. Asi todos los parámetros libres tendrían valores asignados incluso en el caso de no ser actualizados.
+	
+	
+	
+FLUJO:
+
+	1) Lectura de catálogo y mapa de segmentación
+		habrá que leer unas columnas en concreto: 
+		mínimo: id, X, Y, ellip, pa, flux, 
+		opcional: ASSOC	
+	
+	1.1) Lectura de flags de ejecución (algoritmos a aplicar sobre la imágen).
+	
+	[2] Selección opcional de objetos de interés en base a "ASSOC". Esto 
+	equivale a un filtrado.
+	
+	3) Bucle sobre objetos
+	
+	3) Creación de Stamp (MEF con imágen y máscara de objetos adyacentes en base a mapa segmentación). Este MEF puede ser sólo un array multidimensional en memoria o también guardarse como fichero FITS en disco. 
+	4) Creación de un objeto que contiene información de interés del catálogo de Sextractor y del Stamp, para cada objeto (diccionario?):
+	
+	mínimo: id, X,Y (Padre), coordenadas del STAMP, pa, flux, ellip, contenido del STAMP.
+	
+	5) Ejecución de algoritmos de análisis:
+	
+		a) curva de crecimiento y perfil de isofotas elípticas (y/o circular?)
+		b) radio de petrosian
+		c) mapa de segmentación de petrosian
+		d) X,Y, ellip, pa, 
+		e) momentos de orden superior
+		f) gini
+		g) Concentración
+		h) Asimetría
+		j) Smoothness
+		k) simetría axial respecto a ejes mayor y menor (?)
+		l) Análisis de Fourier de perfil azimutal (!?)
+			deproyección
+			perfil azimutal de brillo
+			análisis de fourier
+			identificación de barra
+			fuerza barra
+			geometría barra (??)
+			
+			
+	6) Los anteriores datos son guardados en un diccionario, por ejemplo.
+	
+	7) Escritura a fichero de todos los datos extraidos del análisis y 
+	opcionalmente también del STAMP.
+	
+NOTAS: El mapa de segmentación también podría ser el isofotal que proporciona sextractor, de manera opcional, y todos los cálculos del punto 5) se calcularían en base a esa segmentación
+
+
+NOTAS: también opcionalmente debería poderse pasar al programa los datos suficientes para crear mapas de segmentación de Petrosian a partir de otra imágen de la misma región, pero en otra banda. Esto supone pasar el centro, elipticidad y radio de petrosian.
+
+
+Esto supone, en realidad, complicarse mucho la vida...
+
+FLUJO ALTERNATIVO:
+
+
+varios modos de ejecución: 
+
+nonassoc: +sex, -sex
+assoc: +sex
+
+A) nonassoc +sex
+	
+i) El programa recibe una hoja de parámetros parecida a la de sextractor, pero añadiendo otras que son para la ejecución de moments.py. Es el único input que hay que darle para que empiece la ejecución.
+
+ii) moments.py interpreta la anterior hoja de parámetros
+
+iii) construye una hoja de parámetros para ejecutar sextractor sobre la imágen de interés.
+
+iv) ejecuta sextractor y genera ficheros con nombres temporales (sobre escribiendo).
+
+v) lee ficheros de salida de sextractor (de texto e imagenes)
+
+vi) ejecuta algoritmos propios de moments.py
+
+vii) crea ficheros de output.
+
+
+B) nonassoc -sex
+
+i) se salta los puntos iii) y iv) del modo nonassoc +sex
+ii) de resto hace lo mismo que el modo A)
+
+
+C) assoc +sex
+
+i) idem A) i)
+ii) idem A) ii)
+iii) construye una hoja de parámetros para ejecutar sextractor sobre la imágen de referencia.
+iv) ejecuta sextractor sobre dicha imagen de referencia.
+v) calcula algoritmos sobre dicha imagen.
+vi) construye hoja de parámetros para ejecutar sextractor sobre la imágen
+vii) 
+
+demasiado complicado y eso que no he acabado y hay que añadir algun modo más...

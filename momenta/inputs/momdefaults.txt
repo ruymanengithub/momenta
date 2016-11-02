@@ -1,0 +1,10 @@
+# Comment
+# Test defaults file for moments.py
+# Sex file
+makefits     0
+eta_petro    0.2
+petrofactor  1.5
+box2petro    0.25
+r_big_proc   80
+r_small_proc 20
+saveradial   0

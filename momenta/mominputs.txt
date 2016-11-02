@@ -1,0 +1,13 @@
+# Comment
+# Test input file for moments.py
+
+sexpars_f            momsexpars.txt         # 
+toexec_f             mom2exec.txt           # 
+to_output_f          mom2output.txt         # 
+execpars_f           momexecpars.txt        #
+defaults_f           momdefaults.txt        # 
+father_img_name      /net/cipres/scratch1/THESIS/MOMENTS_TESTS/SEX/input_drz.fits          # 
+father_cat_name      /net/cipres/scratch1/THESIS/MOMENTS_TESTS/SEX/input.cat               # 
+father_sex_name      /net/cipres/scratch1/THESIS/MOMENTS_TESTS/SEX/input.sex               # 
+father_seg_name      /net/cipres/scratch1/THESIS/MOMENTS_TESTS/SEX/input_seg.fits          #
+outfile_name         mom_out.cat            #

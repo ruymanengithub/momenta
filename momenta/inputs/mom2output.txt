@@ -1,0 +1,33 @@
+# Comment
+# Test to_output file for moments.py
+# Params file
+NUMBER
+X_IMAGE
+Y_IMAGE
+THETA_IMAGE
+ELLIPTICITY
+M_A
+M_B
+M_THETA
+M_ELONG
+M_ELLIP
+M_XPEAK
+M_YPEAK
+M_GINI
+R_PETRO
+I_PETRO
+F_PETRO
+M_AS
+M_AS_X
+M_AS_Y
+M_C
+M_S
+M_AXS_MAJ
+M_AXS_MIN
+M_X
+M_Y
+M_X2
+M_Y2
+M_XY
+flags
+radial_file

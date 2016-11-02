@@ -1,0 +1,12 @@
+# Comment
+# Test toexec file for moments.py
+# Params file
+M_GINI
+M_ELLIP
+M_PEAK
+ASYM
+CONCENT
+CLUMPY
+MAJOR_SIM
+MINOR_SIM
+M_MOM

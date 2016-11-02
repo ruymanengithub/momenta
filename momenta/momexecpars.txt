@@ -1,0 +1,7 @@
+# Comment
+# Test execpars file for moments.py
+# Sex file
+makefits   0
+window_inc 100
+usepetro   1
+saveradial 1
